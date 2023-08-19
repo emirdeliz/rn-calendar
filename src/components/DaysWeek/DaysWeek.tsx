@@ -1,20 +1,20 @@
+import { memo } from "react";
 import { useCalendar } from "../../hooks/useCalendar";
+import * as S from './DaysWeek.style';
 
-export const DayWeek = () => { 
+export const DaysWeek = memo(() => {
   const daysIndex = [0, 1, 2, 3, 4, 5, 6];
   const { dayOfWeekAsString } = useCalendar();
   return (
-    <div className="calendar-week-container">
+    <S.DaysWeekContainer>
       {daysIndex.map((day) => {
         const key = day;
         return (
-          <div key={key} className="calendar-week">
-            <span>
-              {dayOfWeekAsString(day)}
-            </span>
-          </div>
+          <S.DayWeek key={key}>
+            {dayOfWeekAsString(day)}
+          </S.DayWeek>
         );
       })}
-    </div>
+    </S.DaysWeekContainer>
   );
-}
+});

@@ -1,6 +1,7 @@
 import { memo, useState } from 'react';
 import * as S from './Calendar.style';
 import { useCalendar } from './hooks/useCalendar';
+import { DaysWeek } from './components';
 
 export interface CalendarProps {
   min?: Date;
@@ -20,8 +21,10 @@ export const Calendar = memo(({ min, max, value }: CalendarProps) => {
   const month = buildMonth(calendarDate, { min, max, value });
   return (
     <S.Calendar>
-      {month.forEach(() => { 
-        
+      <DaysWeek />
+      {month.forEach((item, index) => { 
+        const day = index + 1;
+        <S.Day key={day}>{index + 1}</S.Day>
       })}    
     </S.Calendar>
   );
