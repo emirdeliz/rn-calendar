@@ -1,0 +1,36 @@
+{
+  "name": "rn-calendar",
+  "version": "1.0.0",
+  "description": "React Native Calendar",
+  "main": "index.js",
+  "author": "Emir Marques - <emirdeliz@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "react": "18.2.0",
+    "react-native": "0.72.3"
+  },
+  "devDependencies": {
+    "@testing-library/jest-native": "^5.4.2",
+    "@types/jest": "^29.5.3",
+    "@types/react": "~18.2.14",
+    "@types/styled-components": "^5.1.26",
+    "@typescript-eslint/eslint-plugin": "^5.52.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "babel-plugin-module-resolver": "^5.0.0",
+    "eslint": "^8.0.1",
+    "eslint-config-standard-with-typescript": "^37.0.0",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-n": "^15.0.0 || ^16.0.0 ",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-react": "^7.33.2",
+    "jest": "^29.6.1",
+    "jest-styled-components": "^7.1.1",
+    "prettier": "^3.0.0",
+    "ts-jest": "^29.1.1",
+    "typescript": "*"
+  },
+  "scripts": {
+    "lint": "eslint './src/**/*.{ts,tsx}*' --fix",
+    "format": "prettier --write \"**/*.{js,ts,tsx,md}\""
+  }
+}

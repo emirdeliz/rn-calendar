@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "target": "es5",
+    "baseUrl": "./",
+  },
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "../types/index.d.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
