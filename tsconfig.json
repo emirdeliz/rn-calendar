@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "jsx": "preserve",
     "strict": true,
     "moduleResolution": "node",
     "resolveJsonModule": true,

@@ -1,3 +1,5 @@
+import { CalendarProps } from "../Calendar";
+
 enum DaysOfWeek {
   SUNDAY = 'Domingo',
   MONDAY = 'Segunda-feira',
@@ -23,13 +25,7 @@ enum Months {
   DECEMBER = 'Dezembro',
 }
 
-interface CalendarProps {
-  min?: Date;
-  max?: Date;
-  value?: Date;
-}
-
-export const useCalendar = ({ value, min, max }: CalendarProps) => {
+export const useCalendar = () => {
   const dayOfWeekAsString = (dayIndex: number) => {
     return [
       DaysOfWeek.MONDAY.substring(0, 3),
@@ -59,7 +55,7 @@ export const useCalendar = ({ value, min, max }: CalendarProps) => {
     ][monthIndex];
   };
 
-  const buildCalendarDay = (currentDate: Date) => {
+  const buildCalendarDay = (currentDate: Date, { value, min, max }: CalendarProps) => {
     const currentDay = currentDate.getDate();
     const isSelected =
       value?.getDate() === currentDay && value?.getMonth() === currentDate.getMonth();
@@ -75,38 +71,42 @@ export const useCalendar = ({ value, min, max }: CalendarProps) => {
     };
   };
 
-  const createMonth = (selected: Date) => {
-    const dateObject = new Date();
-    dateObject.setDate(1);
-    dateObject.setMonth(selected.getMonth());
-    dateObject.setFullYear(selected.getFullYear());
+  const buildMonth = (calendarDate: Date, { value, min, max }: CalendarProps) => {
+    const currentDate = new Date();
+    currentDate.setDate(1);
+    currentDate.setMonth(calendarDate.getMonth());
+    currentDate.setFullYear(calendarDate.getFullYear());
 
     const lastMonth = new Date();
-    lastMonth.setMonth(selected.getMonth());
-    lastMonth.setFullYear(selected.getFullYear());
+    lastMonth.setMonth(calendarDate.getMonth());
+    lastMonth.setFullYear(calendarDate.getFullYear());
     lastMonth.setDate(0);
 
     const dayOfWeek = lastMonth.getDay();
     let dayMerge = dayOfWeek;
     let dayDiff = lastMonth.getDate() - dayMerge + 1;
 
-    const calendarDays = [];
+    const days = [];
     while (dayMerge > 0) {
       lastMonth.setDate(dayDiff);
-      calendarDays.push(lastMonth);
+      days.push(buildCalendarDay(lastMonth, { value, min, max }));
       dayMerge -= 1;
       dayDiff += 1;
     }
 
-    dateObject.setDate(dateObject.getDate() + 1);
-    while (dateObject.getDate() !== 1) {
-      dateObject.setDate(dateObject.getDate() + 1);
+    days.push(buildCalendarDay(currentDate, { value, min, max }));
+    currentDate.setDate(currentDate.getDate() + 1);
+    while (currentDate.getDate() !== 1) {
+      days.push(buildCalendarDay(currentDate, { value, min, max }));
+      currentDate.setDate(currentDate.getDate() + 1);
     }
+    return days;
   };
 
   return {
     dayOfWeekAsString,
     monthsAsString,
     buildCalendarDay,
+    buildMonth,
   };
 };
