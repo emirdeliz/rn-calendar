@@ -7,6 +7,7 @@ const CALENDAR_WIDTH = 300;
 export const Calendar = styled.View`
   width: ${CALENDAR_WIDTH}px;
   border: solid 1px #F2F2F2;
+  background-color: #FFFFFF;
   border-radius: 10px;
   padding: 8px;
 `;
