@@ -9,6 +9,7 @@ export interface CalendarProps {
   value?: Date;
   monthLabel?: Array<ReactNode>;
   weekLabel?: Array<ReactNode>;
+  onChange?: (d: Date) => void;
 }
 
 export const Calendar = memo(({
@@ -16,7 +17,8 @@ export const Calendar = memo(({
   max,
   value,
   monthLabel,
-  weekLabel
+  weekLabel,
+  onChange
 }: CalendarProps) => { 
   const { buildMonth } = useCalendar();
   const [calendarDate, setCalendarDate] = useState<Date>(value || new Date());
@@ -39,6 +41,7 @@ export const Calendar = memo(({
               <Button.Text
                 disabled={isDisabled || isObsolete}
                 fontWeight={isSelected ? 'bold' : 'normal'}
+                onPress={() => onChange && onChange(date)}
               >
                 {day}
               </Button.Text>
