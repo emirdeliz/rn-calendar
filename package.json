@@ -1,14 +1,15 @@
 {
-  "name": "rn-calendar",
+  "name": "rn-calendar-simple",
   "version": "1.0.0",
   "description": "React Native Calendar",
   "author": "Emir Marques - <emirdeliz@gmail.com>",
   "main": "src/Calendar.tsx",
   "license": "MIT",
   "dependencies": {
-    "@expo/vector-icons": "^13.0.0",
+    "@testing-library/react-native": "^12.2.2",
     "react": "18.2.0",
     "react-native": "0.72.3",
+    "react-test-renderer": "^18.2.0",
     "styled-components": "^6.0.4"
   },
   "devDependencies": {
@@ -33,6 +34,9 @@
   },
   "scripts": {
     "lint": "eslint './src/**/*.{ts,tsx}*' --fix",
-    "format": "prettier --write \"**/*.{js,ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{js,ts,tsx,md}\"",
+    "test": "yarn jest:clear:cache && jest --watch",
+    "test:ci": "yarn jest:clear:cache && jest",
+    "jest:clear:cache": "jest --clearCache"
   }
 }

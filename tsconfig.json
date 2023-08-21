@@ -5,7 +5,6 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "target": "es5",
-    "baseUrl": "./"
   },
   "include": [
     "**/*.ts",

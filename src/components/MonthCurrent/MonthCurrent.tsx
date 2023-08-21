@@ -1,8 +1,8 @@
 import { ReactNode, memo } from 'react';
-import { FontAwesome } from '@expo/vector-icons';
 import { Button } from '../Button/Button';
 import { useCalendar } from '../../hooks/useCalendar';
 import * as S from './MonthCurrent.style';
+import { Text } from 'react-native';
 
 interface MonthCurrentProps {
   calendarDate: Date;
@@ -34,17 +34,17 @@ export const MonthCurrent = memo(({
   return (
     <S.MonthCurrent>
       <Button onPress={() => updateYear(-1)}>
-        <FontAwesome name="angle-double-left" color="black" />
+        <Text>{"<<"}</Text>
       </Button>
       <Button onPress={() => updateMonth(-1)}>
-        <FontAwesome name="angle-left" color="black" />
+        <Text>{"<"}</Text>
       </Button>
       <S.MonthYear>{monthName} {String(calendarDate.getFullYear())}</S.MonthYear>
       <Button onPress={() => updateMonth(1)}>
-        <FontAwesome name="angle-right" color="black" />
+        <Text>{">"}</Text>
       </Button>
       <Button onPress={() => updateYear(1)}>
-        <FontAwesome name="angle-double-right" color="black" />
+        <Text>{">>"}</Text>
       </Button>
     </S.MonthCurrent>
   );
