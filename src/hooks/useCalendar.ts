@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 import { CalendarProps } from "../Calendar";
 
 enum DaysOfWeek {
@@ -26,8 +27,8 @@ enum Months {
 }
 
 export const useCalendar = () => {
-  const dayOfWeekAsString = (dayIndex: number) => {
-    return [
+  const dayOfWeekAsString = (dayIndex: number, weekLabel?: Array<ReactNode>) => {
+    return weekLabel ? weekLabel[dayIndex] : [
       DaysOfWeek.MONDAY.substring(0, 3),
       DaysOfWeek.TUESDAY.substring(0, 3),
       DaysOfWeek.WEDNESDAY.substring(0, 3),
@@ -38,8 +39,8 @@ export const useCalendar = () => {
     ][dayIndex];
   };
 
-  const monthsAsString = (monthIndex: number) => {
-    return [
+  const monthsAsString = (monthIndex: number, monthLabel?: Array<ReactNode>) => {
+    return monthLabel ? monthLabel[monthIndex] : [
       Months.JANUARY,
       Months.FEBRUARY,
       Months.MARCH,
@@ -55,19 +56,23 @@ export const useCalendar = () => {
     ][monthIndex];
   };
 
-  const buildCalendarDay = (currentDate: Date, { value, min, max }: CalendarProps) => {
+  const buildCalendarDay = (
+    currentDate: Date,
+    isObsolete: boolean,
+    { value, min, max }: CalendarProps
+  ) => {
     const currentDay = currentDate.getDate();
     const isSelected =
       value?.getDate() === currentDay && value?.getMonth() === currentDate.getMonth();
-    const isObsolete = currentDate.getMonth() !== value?.getMonth();
     const dateDay = new Date(value?.getFullYear() || 0, value?.getMonth() || 0, currentDay);
-    const isDisabledDay =
+    const isDisabled =
       (min && dateDay.getTime() < min.getTime()) || (max && dateDay.getTime() > max.getTime());
 
     return {
       isSelected,
       isObsolete,
-      isDisabledDay,
+      isDisabled,
+      date: dateDay
     };
   };
 
@@ -89,15 +94,15 @@ export const useCalendar = () => {
     const days = [];
     while (dayMerge > 0) {
       lastMonth.setDate(dayDiff);
-      days.push(buildCalendarDay(lastMonth, { value, min, max }));
+      days.push(buildCalendarDay(lastMonth, true, { value, min, max }));
       dayMerge -= 1;
       dayDiff += 1;
     }
 
-    days.push(buildCalendarDay(currentDate, { value, min, max }));
+    days.push(buildCalendarDay(currentDate, false, { value, min, max }));
     currentDate.setDate(currentDate.getDate() + 1);
     while (currentDate.getDate() !== 1) {
-      days.push(buildCalendarDay(currentDate, { value, min, max }));
+      days.push(buildCalendarDay(currentDate, false, { value, min, max }));
       currentDate.setDate(currentDate.getDate() + 1);
     }
     return days;
