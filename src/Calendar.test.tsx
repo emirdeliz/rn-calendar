@@ -3,8 +3,6 @@ import { render, screen } from '@testing-library/react-native';
 import { Calendar, CalendarProps } from './Calendar';
 import { Text, View } from 'react-native';
 
-const currentDate = new Date();
-
 const App = (props: CalendarProps) => {
   const [selectedDate, setSelectedDate] = useState<Date>(props.value || new Date());
   return (

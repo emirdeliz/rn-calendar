@@ -36,12 +36,12 @@ export default function App() {
 
 | **Prop**           | **Type**      | **Description**                              |
 | ------------------ | ------------- | -------------------------------------------- |
-| **value** (optional) | Date | The calendar value |
-| **onChange** (optional)  | (d: Date) => void | The method called when an update is performed  |
-| **min** (optional) | Date | The minimum date to be selected |
-| **max** (optional) | Date | The maximum date to be selected |
-| **monthLabel** (optional) | Array<ReactNode> | The name of the months |
-| **weekLabel** (optional) | Array<ReactNode> | the name of the weeks |
+| **value** (optional) | Date | The calendar value. |
+| **onChange** (optional)  | (d: Date) => void | The method called when an update is performed.  |
+| **min** (optional) | Date | The minimum date to be selected. |
+| **max** (optional) | Date | The maximum date to be selected. |
+| **monthLabel** (optional) | Array<ReactNode> | The name of the months. |
+| **weekLabel** (optional) | Array<ReactNode> | the name of the weeks. |
 
 
 
