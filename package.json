@@ -1,6 +1,6 @@
 {
   "name": "@emirdeliz/rn-calendar-simple",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "React Native Calendar",
   "author": "Emir Marques - <emirdeliz@gmail.com>",
   "main": "src/Calendar.tsx",
