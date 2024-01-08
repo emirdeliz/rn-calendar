@@ -41,7 +41,7 @@ export default function App() {
 | **min** (optional) | Date | The minimum date to be selected. |
 | **max** (optional) | Date | The maximum date to be selected. |
 | **monthLabel** (optional) | Array<ReactNode> | The name of the months. |
-| **weekLabel** (optional) | Array<ReactNode> | the name of the weeks. |
+| **weekLabel** (optional) | Array<ReactNode> | The name of the weeks. |
 
 
 
