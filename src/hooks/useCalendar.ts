@@ -64,7 +64,7 @@ export const useCalendar = () => {
     const currentDay = currentDate.getDate();
     const isSelected =
       value?.getDate() === currentDay && value?.getMonth() === currentDate.getMonth();
-    const dateDay = new Date(value?.getFullYear() || 0, value?.getMonth() || 0, currentDay);
+    const dateDay = new Date(currentDate?.getFullYear() || 0, currentDate?.getMonth() || 0, currentDay);
     const isDisabled =
       (min && dateDay.getTime() < min.getTime()) || (max && dateDay.getTime() > max.getTime());
 
