@@ -17,6 +17,9 @@ const formatDateAsPtBr = (date: Date) => {
   return date.toLocaleDateString('pt-br');
 };
 
+jest.mock('expo-font');
+jest.mock('expo-asset');
+
 describe('main test', () => {
   it('Should have a current date', async () => {
     render(<App />);
