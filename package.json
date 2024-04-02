@@ -1,6 +1,6 @@
 {
-  "name": "@emirdeliz/rn-calendar-simple",
-  "version": "1.0.6",
+  "name": "rn-calendar-simple",
+  "version": "1.0.8",
   "description": "React Native Calendar",
   "author": "Emir Marques - <emirdeliz@gmail.com>",
   "main": "src/Calendar.tsx",
@@ -40,9 +40,6 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/emirdeliz/rn-calendar-simple.git"
-  },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
   },
   "scripts": {
     "lint": "eslint './src/**/*.{ts,tsx}*' --fix",
