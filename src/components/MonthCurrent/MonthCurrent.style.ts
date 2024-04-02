@@ -8,5 +8,4 @@ export const MonthCurrent = styled.View`
   padding: 0 5px;
 `;
 
-export const MonthYear = styled.Text`
-`;
+export const MonthYear = styled.Text``;

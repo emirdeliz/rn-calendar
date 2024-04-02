@@ -11,11 +11,11 @@ const App = (props: CalendarProps) => {
       <Calendar value={selectedDate} onChange={setSelectedDate} {...props} />
     </View>
   );
-}
+};
 
-const formatDateAsPtBr = (date: Date) => { 
-  return date.toLocaleDateString('pt-br')
-}
+const formatDateAsPtBr = (date: Date) => {
+  return date.toLocaleDateString('pt-br');
+};
 
 describe('main test', () => {
   it('Should have a current date', async () => {
@@ -30,13 +30,13 @@ describe('main test', () => {
 
     const customMonths = ['apple', 'pear'];
     render(<App value={date} monthLabel={customMonths} />);
-    
+
     const calendarTitle = `${customMonths[1]} ${date.getFullYear()}`;
     const result = await screen.findByText(calendarTitle);
     expect(result).not.toBeNull();
   });
 
-  it('Should have a custom week', async () => { 
+  it('Should have a custom week', async () => {
     const date = new Date();
     date.setMonth(1);
 

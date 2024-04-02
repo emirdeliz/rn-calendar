@@ -6,8 +6,8 @@ const CALENDAR_WIDTH = 300;
 
 export const Calendar = styled.View`
   width: ${CALENDAR_WIDTH}px;
-  border: solid 1px #F2F2F2;
-  background-color: #FFFFFF;
+  border: solid 1px #f2f2f2;
+  background-color: #ffffff;
   border-radius: 10px;
   padding: 8px;
 `;
@@ -23,5 +23,4 @@ export const DayLink = styled.View`
   justify-content: center;
 `;
 
-export const Day = styled.Text`
-`;
+export const Day = styled.Text``;

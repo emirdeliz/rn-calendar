@@ -37,3 +37,6 @@ next-env.d.ts
 
 # History
 .history
+
+# example
+/example/node_modules

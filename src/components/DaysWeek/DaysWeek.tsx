@@ -1,8 +1,8 @@
-import { ReactNode, memo } from "react";
-import { useCalendar } from "../../hooks/useCalendar";
+import { ReactNode, memo } from 'react';
+import { useCalendar } from '../../hooks/useCalendar';
 import * as S from './DaysWeek.style';
 
-interface DaysWeekProps { 
+interface DaysWeekProps {
   weekLabel?: Array<ReactNode>;
 }
 
@@ -15,9 +15,7 @@ export const DaysWeek = memo(({ weekLabel }: DaysWeekProps) => {
         const key = day;
         return (
           <S.DayWeekContainer key={key}>
-            <S.DayWeek>
-              {dayOfWeekAsString(day, weekLabel)}
-            </S.DayWeek>
+            <S.DayWeek>{dayOfWeekAsString(day, weekLabel)}</S.DayWeek>
           </S.DayWeekContainer>
         );
       })}

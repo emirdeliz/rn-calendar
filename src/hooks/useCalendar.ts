@@ -1,5 +1,5 @@
-import { ReactNode } from "react";
-import { CalendarProps } from "../Calendar";
+import { ReactNode } from 'react';
+import { CalendarProps } from '../Calendar';
 
 enum DaysOfWeek {
   SUNDAY = 'Domingo',
@@ -28,32 +28,36 @@ enum Months {
 
 export const useCalendar = () => {
   const dayOfWeekAsString = (dayIndex: number, weekLabel?: Array<ReactNode>) => {
-    return weekLabel ? weekLabel[dayIndex] : [
-      DaysOfWeek.MONDAY.substring(0, 3),
-      DaysOfWeek.TUESDAY.substring(0, 3),
-      DaysOfWeek.WEDNESDAY.substring(0, 3),
-      DaysOfWeek.THURSDAY.substring(0, 3),
-      DaysOfWeek.FRIDAY.substring(0, 3),
-      DaysOfWeek.SATURDAY.substring(0, 3),
-      DaysOfWeek.SUNDAY.substring(0, 3),
-    ][dayIndex];
+    return weekLabel
+      ? weekLabel[dayIndex]
+      : [
+          DaysOfWeek.MONDAY.substring(0, 3),
+          DaysOfWeek.TUESDAY.substring(0, 3),
+          DaysOfWeek.WEDNESDAY.substring(0, 3),
+          DaysOfWeek.THURSDAY.substring(0, 3),
+          DaysOfWeek.FRIDAY.substring(0, 3),
+          DaysOfWeek.SATURDAY.substring(0, 3),
+          DaysOfWeek.SUNDAY.substring(0, 3),
+        ][dayIndex];
   };
 
   const monthsAsString = (monthIndex: number, monthLabel?: Array<ReactNode>) => {
-    return monthLabel ? monthLabel[monthIndex] : [
-      Months.JANUARY,
-      Months.FEBRUARY,
-      Months.MARCH,
-      Months.APRIL,
-      Months.MAY,
-      Months.JUNE,
-      Months.JULY,
-      Months.AUGUST,
-      Months.SEPTEMBER,
-      Months.OCTOBER,
-      Months.NOVEMBER,
-      Months.DECEMBER,
-    ][monthIndex];
+    return monthLabel
+      ? monthLabel[monthIndex]
+      : [
+          Months.JANUARY,
+          Months.FEBRUARY,
+          Months.MARCH,
+          Months.APRIL,
+          Months.MAY,
+          Months.JUNE,
+          Months.JULY,
+          Months.AUGUST,
+          Months.SEPTEMBER,
+          Months.OCTOBER,
+          Months.NOVEMBER,
+          Months.DECEMBER,
+        ][monthIndex];
   };
 
   const buildCalendarDay = (
@@ -64,7 +68,11 @@ export const useCalendar = () => {
     const currentDay = currentDate.getDate();
     const isSelected =
       value?.getDate() === currentDay && value?.getMonth() === currentDate.getMonth();
-    const dateDay = new Date(currentDate?.getFullYear() || 0, currentDate?.getMonth() || 0, currentDay);
+    const dateDay = new Date(
+      currentDate?.getFullYear() || 0,
+      currentDate?.getMonth() || 0,
+      currentDay
+    );
     const isDisabled =
       (min && dateDay.getTime() < min.getTime()) || (max && dateDay.getTime() > max.getTime());
 
@@ -72,7 +80,7 @@ export const useCalendar = () => {
       isSelected,
       isObsolete,
       isDisabled,
-      date: dateDay
+      date: dateDay,
     };
   };
 

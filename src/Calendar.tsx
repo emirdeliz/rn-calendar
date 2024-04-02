@@ -12,14 +12,7 @@ export interface CalendarProps {
   onChange?: (d: Date) => void;
 }
 
-export const Calendar = memo(({
-  min,
-  max,
-  value,
-  monthLabel,
-  weekLabel,
-  onChange
-}: CalendarProps) => { 
+const CalendarBase = memo(({ min, max, value, monthLabel, weekLabel, onChange }: CalendarProps) => {
   const { buildMonth } = useCalendar();
   const [calendarDate, setCalendarDate] = useState<Date>(value || new Date());
   const month = buildMonth(calendarDate, { min, max, value });
@@ -33,7 +26,7 @@ export const Calendar = memo(({
       />
       <DaysWeek weekLabel={weekLabel} />
       <S.DaysContainer>
-        {month.map((item, index ) => { 
+        {month.map((item, index) => {
           const { date, isDisabled, isObsolete, isSelected } = item;
           const day = date.getDate();
           return (
@@ -51,4 +44,6 @@ export const Calendar = memo(({
       </S.DaysContainer>
     </S.Calendar>
   );
-})
+});
+
+export const Calendar = (props: CalendarProps) => <CalendarBase {...props} />;
